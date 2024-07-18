@@ -6,9 +6,9 @@ import { createAmplifyHosting } from './hosting/amplify';
 /************************************************************************************
 
   TYPESCRIPT CLASH RESOLUTION
-  if u have this app in your frontend dir (like e.g.: myFrontendApp/cdkDeployment) 
-  please go to the FE tsconfig.json and put "cdk.out" to the "exclude" array. 
-  Like this: "exclude": ["node_modules", "cdk.out"]
+  if u have this app in your frontend dir (like e.g.: myFrontendApp/deployment) 
+  please go to the FE tsconfig.json and put "deployment" to the "exclude" array. 
+  Like this: "exclude": ["node_modules", "cdk.out", "deployment"]
 
   PRE-DEPLOY
   Please go to you FE directory and run `$ npm run build`

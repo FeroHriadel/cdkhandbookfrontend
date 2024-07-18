@@ -4,6 +4,7 @@
 
 
 ### FEATURES
+- deployment to AWS Amplify using AWS CDK
 - redux
 - context
 - aws-amplify for auth
@@ -33,4 +34,24 @@ NEXT_PUBLIC_APP_URL = http://localhost:3000
 
 
 ### DEPLOYMENT
-- not implemented yet, coming soon
+- push this code to github
+- create a github token in github (like this) <br />
+
+```
+	Github / click ur profile picture (right up) / Settings
+	(left sidebar) Developer Settings / Personal Access Tokens / Tokens (classic)
+	Generate new token / choose classic / Select scopes: repo & admin:repo_hook / name it e.g.: `github-token` / Generate token
+  Copy the value of the token (something like: `ghp_66PWc461Drgh0nvEFiiKnsabzPJtZf2583Wq`)
+```
+
+- Copy the value of the github-token and go to AWS / SECRETS MANAGER / Store a new secret / Other type of secret / Next 
+- in Key/value pair section click `Plaintext` tab and paste the github-token there / Next / Secret name: `github-token` / Next / complete the procedure…
+- go to frontend folder and run `$ npm run build`. See if it builds properly. Fix if not.
+- go to frontend/tsconfi.json and add "cdk.out" to the "exclude" array (if not already there) :
+```
+"exclude": ["node_modules", "cdk.out"]
+```
+- go to frontend/deployment and run `$ cdk deploy --profile ferohriadeladmin`
+
+
+
