@@ -65,7 +65,7 @@ GITHUB_REPO_NAME=cdkhandbookfrontend
 
 - go to go to frontend/deployment and run `$ npm i`
 - go to frontend/deployment and run `$ cdk deploy --profile ferohriadeladmin`
-- after deploy the `NEXT_PUBLIC_APP_URL: "http://localhost:3000"` in frontend/deployment/lib/hosting/amplify.ts is wrong. Because we didn't know ahead of time what url Amplify will give us. Paste the url of your ampligy deployment (or your domain name if applicable) instead of "http://localhost:3000` and push to github.
+- after deploy the `NEXT_PUBLIC_APP_URL: "http://localhost:3000"` in frontend/deployment/lib/hosting/amplify.ts is wrong. Because we didn't know ahead of time what url Amplify will give us. Paste the url of your ampligy deployment (or your domain name if applicable) instead of "http://localhost:3000` and push to github. 
 
 
 
