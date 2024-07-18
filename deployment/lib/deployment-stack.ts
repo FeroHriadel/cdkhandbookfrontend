@@ -18,7 +18,7 @@ import { createAmplifyHosting } from './hosting/amplify';
 *************************************************************************************/
 
 
-export class BackendStack extends cdk.Stack {
+export class DeploymentStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
