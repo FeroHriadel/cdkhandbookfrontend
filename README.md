@@ -47,11 +47,25 @@ NEXT_PUBLIC_APP_URL = http://localhost:3000
 - Copy the value of the github-token and go to AWS / SECRETS MANAGER / Store a new secret / Other type of secret / Next 
 - in Key/value pair section click `Plaintext` tab and paste the github-token there / Next / Secret name: `github-token` / Next / complete the procedure…
 - go to frontend folder and run `$ npm run build`. See if it builds properly. Fix if not.
-- go to frontend/tsconfi.json and add "cdk.out" to the "exclude" array (if not already there) :
+- go to frontend/tsconfig.json and add "deployment" to the "exclude" array (if not already there) : <br />
+
 ```
-"exclude": ["node_modules", "cdk.out"]
+"exclude": ["node_modules", "cdk.out", "deployment]
 ```
+
+- go to frontend/deployment and create a new file: `.env`.
+- Fill it out with values that are true for you: <br />
+
+```
+ACCOUNT_ID=882688607993
+REGION=us-east-1
+APP_NAME=CdkHandbookFrontend
+GITHUB_REPO_NAME=cdkhandbookfrontend
+```
+
+- go to go to frontend/deployment and run `$ npm i`
 - go to frontend/deployment and run `$ cdk deploy --profile ferohriadeladmin`
+- after deploy the `NEXT_PUBLIC_APP_URL: "http://localhost:3000"` in frontend/deployment/lib/hosting/amplify.ts is wrong. Because we didn't know ahead of time what url Amplify will give us. Paste the url of your ampligy deployment (or your domain name if applicable) instead of "http://localhost:3000` and push to github.
 
 
 
