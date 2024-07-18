@@ -46,7 +46,7 @@ export function createAmplifyHosting(scope: Construct, props: AmplifyHostingProp
           preBuild: {commands: [
             'nvm install 20.12.2',
             'nvm use 20.12.2',
-            'nmp i'
+            'npm i'
           ]},
           build: {commands: [
             'npm run build'

@@ -25,7 +25,7 @@ export class DeploymentStack extends cdk.Stack {
     const amplifyConfigDev = {
       ghOwner: 'FeroHriadel',
       ghTokenName: 'github-token',
-      repo: 'scootadmin',
+      repo: 'cdkhandbookfrontend', //please put your github repo name here
       appName: 'cdk-handbook-dev',
       stage: 'dev',
       branch: 'dev'
