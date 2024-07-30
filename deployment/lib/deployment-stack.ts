@@ -28,13 +28,13 @@ export class DeploymentStack extends cdk.Stack {
       ghOwner: 'FeroHriadel',
       ghTokenName: 'github-token',
       repo: process.env.GITHUB_REPO_NAME || 'RepoIsUNDEFINED!',
-      appName: 'cdk-handbook-dev',
-      stage: 'dev',
+      appName: 'dev-cdk-handbook',
+      stage: 'prod',
       branch: 'dev'
     }
     const amplifyConfigProd = {
       ...amplifyConfigDev, 
-      appName: 'cdk-handbook-prod', 
+      appName: 'prod-cdk-handbook', 
       stage: 'prod',
       branch: 'main'
     };

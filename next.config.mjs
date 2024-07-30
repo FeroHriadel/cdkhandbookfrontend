@@ -12,13 +12,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname:  'dev' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
+        hostname:  'dev-aws-handbook' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
         port: '',
         pathname: '/**',  // This allows all paths under the hostname
       },
       {
         protocol: 'https',
-        hostname:  'prod' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
+        hostname:  'prod-aws-handbook' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
         port: '',
         pathname: '/**',
       },
