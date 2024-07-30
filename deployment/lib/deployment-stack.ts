@@ -40,7 +40,7 @@ export class DeploymentStack extends cdk.Stack {
     };
     
 
-    // const amplifyAppDev = createAmplifyHosting(this, amplifyConfigDev); //uncomment for dev branch
-    const amplifyAppProd = createAmplifyHosting(this, amplifyConfigProd);
+    const amplifyAppDev = createAmplifyHosting(this, amplifyConfigDev); //uncomment for dev branch
+    //const amplifyAppProd = createAmplifyHosting(this, amplifyConfigProd);
   }
 }

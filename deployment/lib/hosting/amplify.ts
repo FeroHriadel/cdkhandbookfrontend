@@ -2,7 +2,8 @@ import { SecretValue } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as amplify from "@aws-cdk/aws-amplify-alpha";
 import { BuildSpec } from "aws-cdk-lib/aws-codebuild";
-import { version } from "os";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 
@@ -32,12 +33,11 @@ export function createAmplifyHosting(scope: Construct, props: AmplifyHostingProp
     autoBranchDeletion: true,
     customRules: [{source: '*', target: '/index.html', status: amplify.RedirectStatus.NOT_FOUND_REWRITE}],
     environmentVariables: {
-      NEXT_PUBLIC_STAGE: stage,
-      NEXT_PUBLIC_API: "https://g7fw7hz4ul.execute-api.us-east-1.amazonaws.com/prod",
-      NEXT_PUBLIC_USERPOOL_ID: "us-east-1_1wYSACuy9",
-      NEXT_PUBLIC_USERPOOL_CLIENT_ID: "3s4d2gedek4lerctki1ib0h1qg",
-      NEXT_PUBLIC_IMAGES_BUCKET: "cdk-handbook-images-bucket-30krk3o.s3.us-east-1.amazonaws.com",
-      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+      NEXT_PUBLIC_API: stage === 'dev' ? process.env.DEV_API!  : process.env.PROD_API!,
+      NEXT_PUBLIC_USERPOOL_ID: stage === 'dev' ? process.env.DEV_USERPOOL_ID! : process.env.PROD_USERPOOL_ID!,
+      NEXT_PUBLIC_USERPOOL_CLIENT_ID: stage === 'dev' ? process.env.DEV_USERPOOL_CLIENT_ID! : process.env.PROD_USERPOOL_CLIENT_ID!,
+      NEXT_PUBLIC_APP_URL: stage === 'dev' ? process.env.DEV_APP_URL! : process.env.PROD_APP_URL!,
+      NEXT_PUBLIC_IMAGES_BUCKET: "cdk-handbook-images-bucket-30krk3o.s3.us-east-1.amazonaws.com", //this is impotant for next.config.mjs so it knows what sources images can come from. The code in next.config.mjs will prepend both `dev` and `prod` to the bucket url, no need to do it here like: `stage === "dev" ? devBucket : prodBucket`
     },
     buildSpec: BuildSpec.fromObjectToYaml({
       version: 1,

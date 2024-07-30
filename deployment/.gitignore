@@ -9,3 +9,4 @@ cdk.out
 
 #env vars
 .env
+deployment/.env

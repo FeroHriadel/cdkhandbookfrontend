@@ -12,9 +12,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGES_BUCKET,
+        hostname:  'dev' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
         port: '',
         pathname: '/**',  // This allows all paths under the hostname
+      },
+      {
+        protocol: 'https',
+        hostname:  'prod' + process.env.NEXT_PUBLIC_IMAGES_BUCKET,
+        port: '',
+        pathname: '/**',
       },
     ],
   },
