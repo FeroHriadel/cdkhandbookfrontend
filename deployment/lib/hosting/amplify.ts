@@ -33,11 +33,11 @@ export function createAmplifyHosting(scope: Construct, props: AmplifyHostingProp
     autoBranchDeletion: true,
     customRules: [{source: '*', target: '/index.html', status: amplify.RedirectStatus.NOT_FOUND_REWRITE}],
     environmentVariables: {
-      NEXT_PUBLIC_API: appName === 'dev-cdk-handbook' ? process.env.DEV_API!  : process.env.PROD_API!,
-      NEXT_PUBLIC_USERPOOL_ID: appName === 'dev-cdk-handbook' ? process.env.DEV_USERPOOL_ID! : process.env.PROD_USERPOOL_ID!,
-      NEXT_PUBLIC_USERPOOL_CLIENT_ID: appName === 'dev-cdk-handbook' ? process.env.DEV_USERPOOL_CLIENT_ID! : process.env.PROD_USERPOOL_CLIENT_ID!,
-      NEXT_PUBLIC_APP_URL: appName === 'dev-cdk-handbook' ? process.env.DEV_APP_URL! : process.env.PROD_APP_URL!,
-      NEXT_PUBLIC_IMAGES_BUCKET: "cdk-handbook-images-bucket-30krk3o.s3.us-east-1.amazonaws.com", //this is impotant for next.config.mjs so it knows what sources images can come from. The code in next.config.mjs will prepend both `dev` and `prod` to the bucket url, no need to do it here like: appName === 'dev-cdk-handbook' ? devBucket : prodBucket`
+      NEXT_PUBLIC_API: process.env.NEXT_PUBLIC_API || 'apiUNDEFINED!',
+      NEXT_PUBLIC_USERPOOL_ID: process.env.NEXT_PUBLIC_USERPOOL_ID || 'userPoolIdUNDEFINED!',
+      NEXT_PUBLIC_USERPOOL_CLIENT_ID: process.env.NEXT_PUBLIC_USERPOOL_CLIENT_ID || 'userPoolClientIdUNDEFINED!',
+      NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'appUrlUNDEFINED!',
+      NEXT_PUBLIC_IMAGES_BUCKET: process.env.IMAGES_BUCKET || 'imaghesBucketUNDEFINED!', //this is important for next.config.mjs so it knows what sources images can come from. The code in next.config.mjs will prepend both `dev` and `prod` to the bucket url, no need to do it here like: appName === 'dev-cdk-handbook' ? devBucket : prodBucket`. Please add any other bucket prefix to next.config.js (it's easy, just copy paste and change what's already there)
     },
     buildSpec: BuildSpec.fromObjectToYaml({
       version: 1,

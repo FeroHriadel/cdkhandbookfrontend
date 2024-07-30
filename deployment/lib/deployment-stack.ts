@@ -24,23 +24,15 @@ export class DeploymentStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const amplifyConfigDev = {
+    const amplifyConfig = {
       ghOwner: 'FeroHriadel',
       ghTokenName: 'github-token',
       repo: process.env.GITHUB_REPO_NAME || 'RepoIsUNDEFINED!',
-      appName: 'dev-cdk-handbook',
+      appName: 'dev-cdk-handbook', //change this before creating another amplify deployment for a branch: e.g.: `prod-cdk-handbook`
       stage: 'prod',
-      branch: 'dev'
-    }
-    const amplifyConfigProd = {
-      ...amplifyConfigDev, 
-      appName: 'prod-cdk-handbook', 
-      stage: 'prod',
-      branch: 'main'
-    };
-    
+      branch: 'dev' //change this with a branch you want to create amplify depliyment for: e.g.: `main`
+    }  
 
-    const amplifyAppDev = createAmplifyHosting(this, amplifyConfigDev); //uncomment for dev branch
-    //const amplifyAppProd = createAmplifyHosting(this, amplifyConfigProd);
+    const amplifyAppDev = createAmplifyHosting(this, amplifyConfig);
   }
 }
